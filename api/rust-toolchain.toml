@@ -1,0 +1,6 @@
+# sqlx 0.9 needs Rust 1.94 or later, and Vercel's build image ships an older default, so
+# rustup installs this toolchain for the build. Keep it in sync with the Dockerfile.
+[toolchain]
+channel = "1.95.0"
+profile = "minimal"
+components = ["clippy", "rustfmt"]

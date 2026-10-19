@@ -1,0 +1,24 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "build": {
+    "env": {
+      "VERCEL_EXPERIMENTAL_BUILDPACK_RUST": "1"
+    }
+  },
+  "services": {
+    "ui": { "root": "ui/", "framework": "nextjs" },
+    "api": { "root": "api/", "framework": "rust", "entrypoint": "src/bin/api.rs" }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": { "service": "api" } },
+    { "source": "/(.*)", "destination": { "service": "ui" } }
+  ],
+  "daemons": {
+    "worker": {
+      "root": "api/",
+      "entrypoint": "Dockerfile",
+      "instances": { "iad1": 1 },
+      "terminationGracePeriodSeconds": 30
+    }
+  }
+}

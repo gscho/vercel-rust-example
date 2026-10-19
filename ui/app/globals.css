@@ -1,0 +1,75 @@
+/*
+ * Page-owned styles. Typography, color, controls, and layout primitives come from
+ * vercel-brand.css (loaded in app/layout.tsx); these rules only add the pieces it
+ * doesn't cover, using its public tokens.
+ */
+
+.vbg-custom-nowrap {
+  white-space: nowrap;
+}
+
+.vbg-custom-endpoint {
+  display: grid;
+  gap: var(--vbg-space-1);
+}
+
+.vbg-custom-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--vbg-space-2);
+  white-space: nowrap;
+}
+
+.vbg-custom-status-mark {
+  flex: none;
+  width: 0.625em;
+  height: 0.625em;
+  border: 1px solid currentColor;
+}
+
+.vbg-custom-status[data-status="up"] .vbg-custom-status-mark {
+  border-color: var(--vbg-color-success);
+  background: var(--vbg-color-success);
+}
+
+.vbg-custom-status[data-status="down"] .vbg-custom-status-mark {
+  border-color: var(--vbg-color-error);
+  background: var(--vbg-color-error);
+}
+
+.vbg-custom-check-strip {
+  display: block;
+  width: 180px;
+  height: 20px;
+}
+
+.vbg-viz-check-ok {
+  fill: var(--vbg-text-secondary);
+}
+
+.vbg-viz-check-failed,
+.vbg-viz-failure {
+  fill: var(--vbg-color-error);
+}
+
+.vbg-custom-response-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vbg-custom-add-form {
+  display: grid;
+  gap: var(--vbg-space-6);
+}
+
+.vbg-custom-add-form-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  align-items: start;
+  gap: var(--vbg-space-4) var(--vbg-space-6);
+}
+
+.vbg-custom-add-form-fields > * {
+  min-width: 0;
+}

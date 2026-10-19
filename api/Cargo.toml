@@ -1,0 +1,38 @@
+[package]
+name = "uptime"
+version = "0.1.0"
+edition = "2024"
+publish = false
+# `cargo run` starts the API. On Vercel, the service entrypoint in vercel.json picks the
+# binary instead.
+default-run = "api"
+
+[dependencies]
+anyhow = "1"
+axum = "0.8"
+bytes = "1"
+chrono = { version = "0.4", features = ["serde"] }
+futures = "0.3"
+gethostname = "1"
+log = "0.4"
+mime = "0.3"
+multer = "3"
+reqwest = { version = "0.13", default-features = false, features = ["http2", "json", "rustls", "stream"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sqlx = { version = "0.9", default-features = false, features = ["chrono", "derive", "macros", "migrate", "postgres", "runtime-tokio", "tls-rustls-aws-lc-rs"] }
+thiserror = "2"
+tokio = { version = "1", features = ["fs", "macros", "net", "rt-multi-thread", "signal", "time"] }
+tokio-util = "0.7"
+tower-http = { version = "0.7", features = ["catch-panic", "trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+url = "2"
+uuid = { version = "1", features = ["v4"] }
+
+[dev-dependencies]
+wiremock = "0.6"
+
+[profile.release]
+strip = true
+lto = "thin"
